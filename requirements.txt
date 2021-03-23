@@ -1,3 +1,9 @@
+### Required
+
+## Chapter 2
+stanza
+difflib
+
 
 ## Chapter 3
 numpy>=1.13.3

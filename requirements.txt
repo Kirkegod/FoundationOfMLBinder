@@ -2,7 +2,6 @@
 
 ## Chapter 2
 stanza
-difflib
 
 
 ## Chapter 3

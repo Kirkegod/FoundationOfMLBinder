@@ -2,7 +2,7 @@
 
 ## Chapter 2
 stanza
-
+stop_words
 
 ## Chapter 3
 numpy>=1.13.3

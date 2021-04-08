@@ -1,5 +1,7 @@
 ### Required
 
+torch
+
 ## Chapter 2
 stanza
 stop_words

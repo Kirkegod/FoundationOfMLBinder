@@ -1,0 +1,1 @@
+wget -q -O data/ch4/wikipedia-sv.bin "https://www.ida.liu.se/~TDP030/commons/labs/l5/data/wikipedia-sv.bin"

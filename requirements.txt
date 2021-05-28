@@ -1,4 +1,6 @@
 ### Required
+wasabi>=0.2.1,<1.1.0
+
 numpy==1.19.1
 scikit-learn==0.23.2
 matplotlib==3.3.3

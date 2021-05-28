@@ -1,26 +1,5 @@
 ### Required
+numpy==1.19.1
+scikit-learn==0.23.2
+matplotlib==3.3.3
 
-torch
-
-## Chapter 2
-stanza
-stop_words
-wordcloud
-
-## Chapter 3
-numpy>=1.13.3
-scipy>=0.19.1
-joblib>=0.11
-threadpoolctl>=2.0.0
-matplotlib>=2.1.1
-pandas>=0.25.0
-seaborn>=0.9.0
-scikit-learn>=0.23
-
-
-## Chapter 5
-python-Levenshtein
-gensim
-
-## Chapter 5
-spacy

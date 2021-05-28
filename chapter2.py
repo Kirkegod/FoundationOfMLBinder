@@ -1,3 +1,5 @@
+import numpy as np
+
 # Exercise 2.1
 def load_bat_data():
     train_data = np.loadtxt("data/chapter2/bat_train_data.csv", delimiter=",")

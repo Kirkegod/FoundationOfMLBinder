@@ -14,4 +14,15 @@ def load_bat_data():
     return X_train, y_train, X_test, y_test
 
 # Exercise 2.2
-# TODO
+def load_apartment_data():
+    train_data = np.loadtxt("data/chapter2/apartment_train.csv", delimiter=",")
+    val_data = np.loadtxt("data/chapter2/apartment_val.csv", delimiter=",")
+
+    X_train = train_data[:,:2]
+    y_train = train_data[:,2]
+
+    X_val = val_data[:,:2]
+    y_val = val_data[:,2]
+
+    return X_train, y_train, X_val, y_val
+

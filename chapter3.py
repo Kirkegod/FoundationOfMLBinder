@@ -1,5 +1,7 @@
 from sklearn.datasets import fetch_california_housing
 from sklearn.utils import shuffle
+from palmerpenguins import load_penguins
+import numpy as np
 
 
 # Exercise 3.1

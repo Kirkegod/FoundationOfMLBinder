@@ -2,12 +2,12 @@ import numpy as np
 
 def load_classification_data():
     # Load classification training data
-    train_data = np.load("class_train_data.npy")
+    train_data = np.load("data/chapter4/class_train_data.npy")
     X_train = train_data[:, :2]
     y_train = train_data[:, 2]
 
     # Load classification test/validation data
-    test_data = np.load("class_test_data.npy")
+    test_data = np.load("data/chapter4/class_test_data.npy")
     X_test = test_data[:, :2]
     y_test = test_data[:, 2]
 

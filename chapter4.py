@@ -19,18 +19,17 @@ def load_classification_data():
     
 def load_diabetes_data():
     diabetes = datasets.load_diabetes()
-
-    # De-scale categorical variable
-    diabetes.data[diabetes.data[:, 1] < 0, 1] = 0
-    diabetes.data[diabetes.data[:, 1] > 0, 1] = 1
+    
+    # We exclude the categorical variable
+    diabetes_X = np.column_stack((diabetes.data[:, 0], diabetes.data[:, 2:]))
 
     # Randomly split the data into training and test set
     np.random.seed(23)
-    n_train = int(0.8 * diabetes.data.shape[0])
-    shuffled_inds = np.random.choice(diabetes.data.shape[0], size=diabetes.data.shape[0], replace=False)
+    n_train = int(0.8 * diabetes_X.shape[0])
+    shuffled_inds = np.random.choice(diabetes_X.shape[0], size=diabetes_X.shape[0], replace=False)
 
-    X_train = diabetes.data[shuffled_inds[:n_train], :]
-    X_test = diabetes.data[shuffled_inds[n_train:], :]
+    X_train = diabetes_X[shuffled_inds[:n_train], :]
+    X_test = diabetes_X[shuffled_inds[n_train:], :]
 
     y_train = diabetes.target[shuffled_inds[:n_train]]
     y_test = diabetes.target[shuffled_inds[n_train:]]

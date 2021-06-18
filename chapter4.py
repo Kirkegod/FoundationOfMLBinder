@@ -1,4 +1,5 @@
 import numpy as np
+from sklearn import datasets
 
 def load_classification_data():
     # Load classification training data

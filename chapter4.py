@@ -16,6 +16,12 @@ def load_classification_data():
 
     return X_train, y_train, X_test, y_test
     
+def load_classification_models():
+    model_1 = pickle.load(open("data/chapter4/model_0", 'rb'))
+    model_2 = pickle.load(open("data/chapter4/model_1", 'rb'))
+    model_3 = pickle.load(open("data/chapter4/model_2", 'rb'))
+    
+    return model_1, model_2, model_3
     
 def load_diabetes_data():
     diabetes = datasets.load_diabetes()
@@ -35,3 +41,4 @@ def load_diabetes_data():
     y_test = diabetes.target[shuffled_inds[n_train:]]
 
     return X_train, y_train, X_test, y_test
+

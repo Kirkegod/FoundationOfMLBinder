@@ -1,5 +1,6 @@
 import numpy as np
 from sklearn import datasets
+import pickle
 
 def load_classification_data():
     # Load classification training data

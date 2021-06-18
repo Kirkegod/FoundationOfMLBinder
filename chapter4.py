@@ -13,9 +13,6 @@ def load_classification_data():
     X_test = test_data[:, :2]
     y_test = test_data[:, 2]
 
-    print(X_train.shape)
-    print(X_test.shape)
-
     return X_train, y_train, X_test, y_test
     
 def load_classification_models():

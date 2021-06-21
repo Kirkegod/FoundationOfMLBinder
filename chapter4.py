@@ -1,5 +1,6 @@
 import numpy as np
 from sklearn import datasets
+import pickle
 
 def load_classification_data():
     # Load classification training data
@@ -11,9 +12,6 @@ def load_classification_data():
     test_data = np.load("data/chapter4/class_test_data.npy")
     X_test = test_data[:, :2]
     y_test = test_data[:, 2]
-
-    print(X_train.shape)
-    print(X_test.shape)
 
     return X_train, y_train, X_test, y_test
     

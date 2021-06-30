@@ -45,3 +45,5 @@ def plot_density(f, title=None, save_name=None, n_samples=1000, ax_lim=None):
     if save_name:
         plt.savefig("{}.png".format(save_name))
 
+    fig.patch.set_facecolor("white")
+

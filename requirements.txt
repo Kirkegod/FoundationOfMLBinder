@@ -5,3 +5,4 @@ numpy==1.19.1
 scikit-learn==0.23.2
 matplotlib==3.3.3
 palmerpenguins==0.1.4
+scipy==1.7.0

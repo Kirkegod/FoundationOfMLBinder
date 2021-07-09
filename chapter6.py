@@ -27,6 +27,28 @@ def load_full_mnist_data():
 
     return X_train_l, y_train_l, X_train_u, X_test, y_test
     
+def load_full_reduced_mnist_data():
+    """Load labeled and unlabeled MNIST data"""
+
+    train_data_labeled = np.load("data/chapter6/MNIST_train_data_labeled.npy")
+    train_data_unlabeled = np.load("data/chapter6/MNIST_train_data_unlabeled.npy")
+    test_data = np.load("data/chapter6/MNIST_test_data.npy")
+
+    X_train_l, y_train_l = train_data_labeled[:, :-1], train_data_labeled[:, -1]
+    X_train_u = train_data_unlabeled
+    X_test, y_test = test_data[:, :-1], test_data[:, -1]
+    
+    # Perform PCA (based on full train set)
+    pca = PCA(n_components=2) # Leave empty
+    X_train_full_reduced = pca.fit_transform(X_train_full)
+    X_test_reduced = pca.transform(X_test)
+
+    # Split the data again into labeled and unlabeled sets
+    X_train_l_reduced = X_train_full_reduced[:X_train_l.shape[0], :]
+    X_train_u_reduced = X_train_full_reduced[X_train_l.shape[0]:, :]
+
+    return X_train_l_reduced, y_train_l, X_train_u_reduced, X_test, y_test
+    
 def visualize_data(X_l, y_l, X_u=None, ax=None, show=True):
     """Visualise 2D class data
     X_l: (n_l, p) labeled input
@@ -74,7 +96,6 @@ def visualize_clusters(X_train, y_train, mu, sigma, X_train_u=None):
         draw_ellipse(mu[i, :], sigma[i, :, :], ax)
 
     plt.show()
-    
     
 def draw_ellipse(mu, sigma, ax):
     """Draw 2D ellipse corresponding to contour of Gaussian distribution with specified mean and covariance (2 stds)

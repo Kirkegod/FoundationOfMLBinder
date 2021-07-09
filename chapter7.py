@@ -13,3 +13,19 @@ def load_red_wine_data():
     y = np.array(data[:, -1], dtype=int)
     
     return X, y
+    
+def load_white_wine_data():
+    """Load white wine dataset"""
+
+    data_filename = "winequality-white.csv"
+    data = np.loadtxt(data_filename, delimiter=";")
+    X = data[:, :-1]
+    y = np.array(data[:, -1], dtype=int)
+    
+    # Remove the observations from class 9
+    inds_to_keep = y!=9
+    X = X[inds_to_keep, :]
+    y = y[inds_to_keep]
+    
+    
+    return X, y

@@ -2,7 +2,8 @@ import numpy as np
 
 def load_red_wine_data():
     """Load red wine dataset"""
-    data_filename = "winequality-red.csv"
+    
+    data_filename = "data/chapter7/winequality-red.csv"
     
     # We load the data and set any missing values to NaN
     data = np.genfromtxt(data_filename, delimiter=";", filling_values=np.nan)
@@ -17,7 +18,7 @@ def load_red_wine_data():
 def load_white_wine_data():
     """Load white wine dataset"""
 
-    data_filename = "winequality-white.csv"
+    data_filename = "data/chapter7/winequality-white.csv"
     data = np.loadtxt(data_filename, delimiter=";")
     X = data[:, :-1]
     y = np.array(data[:, -1], dtype=int)

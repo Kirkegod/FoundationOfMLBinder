@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Ellipse
 import scipy.stats as sps
+from sklearn.decomposition import PCA
 
 def load_labeled_mnist_data():
     """Load labeled MNIST data"""

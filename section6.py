@@ -7,8 +7,8 @@ from sklearn.decomposition import PCA
 def load_labeled_mnist_data():
     """Load labeled MNIST data"""
 
-    train_data = np.load("data/chapter6/MNIST_train_data_labeled.npy")
-    test_data = np.load("data/chapter6/MNIST_test_data.npy")
+    train_data = np.load("data/section6/MNIST_train_data_labeled.npy")
+    test_data = np.load("data/section6/MNIST_test_data.npy")
 
     X_train, y_train = train_data[:, :-1], train_data[:, -1]
     X_test, y_test = test_data[:, :-1], test_data[:, -1]
@@ -18,9 +18,9 @@ def load_labeled_mnist_data():
 def load_full_mnist_data():
     """Load labeled and unlabeled MNIST data"""
 
-    train_data_labeled = np.load("data/chapter6/MNIST_train_data_labeled.npy")
-    train_data_unlabeled = np.load("data/chapter6/MNIST_train_data_unlabeled.npy")
-    test_data = np.load("data/chapter6/MNIST_test_data.npy")
+    train_data_labeled = np.load("data/section6/MNIST_train_data_labeled.npy")
+    train_data_unlabeled = np.load("data/section6/MNIST_train_data_unlabeled.npy")
+    test_data = np.load("data/section6/MNIST_test_data.npy")
 
     X_train_l, y_train_l = train_data_labeled[:, :-1], train_data_labeled[:, -1]
     X_train_u = train_data_unlabeled
@@ -31,9 +31,9 @@ def load_full_mnist_data():
 def load_full_reduced_mnist_data():
     """Load labeled and unlabeled MNIST data"""
 
-    train_data_labeled = np.load("data/chapter6/MNIST_train_data_labeled.npy")
-    train_data_unlabeled = np.load("data/chapter6/MNIST_train_data_unlabeled.npy")
-    test_data = np.load("data/chapter6/MNIST_test_data.npy")
+    train_data_labeled = np.load("data/section6/MNIST_train_data_labeled.npy")
+    train_data_unlabeled = np.load("data/section6/MNIST_train_data_unlabeled.npy")
+    test_data = np.load("data/section6/MNIST_test_data.npy")
 
     X_train_l, y_train_l = train_data_labeled[:, :-1], train_data_labeled[:, -1]
     X_train_u = train_data_unlabeled

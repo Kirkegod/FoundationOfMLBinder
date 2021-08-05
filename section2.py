@@ -2,8 +2,8 @@ import numpy as np
 
 # Exercise 2.1
 def load_bat_data():
-    train_data = np.loadtxt("data/chapter2/bat_train_data.csv", delimiter=",")
-    test_data = np.loadtxt("data/chapter2/bat_test_data.csv", delimiter=",")
+    train_data = np.loadtxt("data/section2/bat_train_data.csv", delimiter=",")
+    test_data = np.loadtxt("data/section2/bat_test_data.csv", delimiter=",")
 
     X_train = train_data[:, :2]
     y_train = (train_data[:, 2]).astype(int)
@@ -15,8 +15,8 @@ def load_bat_data():
 
 # Exercise 2.2
 def load_apartment_data():
-    train_data = np.loadtxt("data/chapter2/apartment_train.csv", delimiter=",")
-    val_data = np.loadtxt("data/chapter2/apartment_val.csv", delimiter=",")
+    train_data = np.loadtxt("data/section2/apartment_train.csv", delimiter=",")
+    val_data = np.loadtxt("data/section2/apartment_val.csv", delimiter=",")
 
     X_train = train_data[:,:2]
     y_train = train_data[:,2]

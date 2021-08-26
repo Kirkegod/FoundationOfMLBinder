@@ -192,8 +192,8 @@ def data_likelihood_labeled(model_params, X_train_l, y_train_l):
     
     # Loop over classes
     for i in range(model_params["pi"].shape[0]):
-        mvn = multivariate_normal(model_params["mu"][i, :], 
-                                  model_params["sigma"][i, :, :]) 
+        mvn = sps.multivariate_normal(model_params["mu"][i, :], 
+                                      model_params["sigma"][i, :, :]) 
 
         # Computations over labeled data (we can calculate the likelihood directly over all X in class i)
         likelihood += np.sum((y_train_l == i) * (np.log(model_params["pi"][i]) 
@@ -216,8 +216,8 @@ def data_likelihood_unlabeled(model_params, X_train_u):
     
     # Loop over classes
     for i in range(model_params["pi"].shape[0]):
-        mvn = multivariate_normal(model_params["mu"][i, :], 
-              model_params["sigma"][i, :, :]) 
+        mvn = sps.multivariate_normal(model_params["mu"][i, :], 
+                                      model_params["sigma"][i, :, :]) 
 
         # Computations over unlabeled data (sum over classes)
         likelihood += model_params["pi"][i] * mvn.pdf(X_train_u)

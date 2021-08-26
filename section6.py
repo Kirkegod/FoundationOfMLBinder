@@ -160,4 +160,81 @@ def plot_density(f, title=None, save_name=None, n_samples=1000, ax_lim=None):
         plt.savefig("{}.png".format(save_name))
 
     fig.patch.set_facecolor("white")
+    
+def compute_data_likelihood(model_params, X_train_l, y_train_l, X_train_u):
+    """ Compute likelihood of labeled and unlabeled data 
+    
+    model_params: dictionary with model parameters "pi" (n_classes,), 
+                  "mu" (n_classes, p), "sigma" (n_classes, p, p)
+    X_train_l: (n_train_l, p) labeled input array
+    y_train_l: (n_train_l,) targets for labeled data
+    X_train_u: (n_train_u, p) unlabeled input array
 
+    returns: log likelihood of labeled data for given model parameters 
+            (pi, mu, sigma)
+    """
+    
+    return data_likelihood_labeled(model_params, X_train_l, y_train_l) + data_likelihood_unlabeled(model_params, X_train_u)
+
+
+def data_likelihood_labeled(model_params, X_train_l, y_train_l):
+    """ Compute data likelihood, labeled observations
+    model_params: dictionary with model parameters "pi" (n_classes,), 
+                  "mu" (n_classes, p), "sigma" (n_classes, p, p)
+    X_train_l: (n_train_l, p) labeled input array
+    y_train_l: (n_train_l,) targets for labeled data
+
+    returns: log likelihood of labeled data for given model parameters 
+            (pi, mu, sigma)
+    """
+ 
+    likelihood = 0
+    
+    # Loop over classes
+    for i in range(model_params["pi"].shape[0]):
+        mvn = multivariate_normal(model_params["mu"][i, :], 
+                                  model_params["sigma"][i, :, :]) 
+
+        # Computations over labeled data (we can calculate the likelihood directly over all X in class i)
+        likelihood += np.sum((y_train_l == i) * (np.log(model_params["pi"][i]) 
+                      + mvn.logpdf(X_train_l))) 
+
+    return likelihood
+
+
+def data_likelihood_unlabeled(model_params, X_train_u):
+    """ Compute data likelihood, unlabeled observations
+    model_params: dictionary with model parameters "pi" (n_classes,), 
+                  "mu" (n_classes, p), "sigma" (n_classes, p, p)
+    X_train_u: (n_train_u, p) unlabeled input array
+
+    returns: log likelihood of unlabeled data for given model parameters 
+            (pi, mu, sigma)
+    """
+ 
+    likelihood = 0
+    
+    # Loop over classes
+    for i in range(model_params["pi"].shape[0]):
+        mvn = multivariate_normal(model_params["mu"][i, :], 
+              model_params["sigma"][i, :, :]) 
+
+        # Computations over unlabeled data (sum over classes)
+        likelihood += model_params["pi"][i] * mvn.pdf(X_train_u)
+
+    # Take the log after summing over classes, then sum over observations
+    likelihood = np.sum(np.log(likelihood))
+
+    return likelihood
+
+
+def check_convergence(prev_likelihood, new_likelihood, threshold=1e-6):
+    """Check convergence of EM algorithm
+    prev_loss: (log) likelihood prior to parameter update
+    new_loss:  (log) likelihood after parameter update
+    threshold: maximum change in likelihood to stop algorithm
+
+    returns: True if change in likelihood is smaller than threshold, False otherwise
+    """
+
+    return (np.abs(prev_likelihood - new_likelihood) < threshold)

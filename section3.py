@@ -71,8 +71,5 @@ def load_penguin_data():
     X_test, y_test = test_data[:, :-1], test_data[:, -1]
     classes, _ = np.unique(y_train, return_inverse=True)
 
-    print(X_train.shape)
-    print(y_train.shape)
-
     return X_train, y_train, X_test, y_test, classes
 

@@ -21,7 +21,7 @@ def load_california_data():
 
     return X_train, y_train, X_test, y_test
     
-def load_penguin_data():
+def load_and_save_penguin_data():
     """ Load palmer penguin data including flipper length, bill length, body mass (attributes) and species (target)
     :return:
         X_train: train observations (n_train, n_attributes)
@@ -55,4 +55,22 @@ def load_penguin_data():
     X_train, y_train = X[train_inds, :], y[train_inds]
     X_test, y_test = X[test_inds, :], y[test_inds]
 
+    np.savetxt("data/section3/penguin_train.csv", np.column_stack((X_train, y_train)), delimiter=',')
+    np.savetxt("data/section3/penguin_test.csv", np.column_stack((X_test, y_test)), delimiter=',')
+
     return X_train, y_train, X_test, y_test, classes
+
+
+def load_penguin_data():
+    train_data = np.loadtxt('data/section3/penguin_train.csv', delimiter=",")
+    test_data = np.loadtxt('data/section3/penguin_test.csv', delimiter=",")
+
+    X_train, y_train = train_data[:, :-1], train_data[:, -1]
+    X_test, y_test = test_data[:, :-1], test_data[:, -1]
+    classes, _ = np.unique(y_train, return_inverse=True)
+
+    print(X_train.shape)
+    print(y_train.shape)
+
+    return X_train, y_train, X_test, y_test, classes
+

@@ -62,6 +62,8 @@ def load_and_save_penguin_data():
 
 
 def load_penguin_data():
+    np.random.seed(21)
+
     train_data = np.loadtxt('data/section3/penguin_train.csv', delimiter=",")
     test_data = np.loadtxt('data/section3/penguin_test.csv', delimiter=",")
 

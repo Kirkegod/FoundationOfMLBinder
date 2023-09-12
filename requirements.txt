@@ -1,8 +1,8 @@
 ### Required
 wasabi>=0.2.1,<1.1.0
 
-numpy==1.19.1
-scikit-learn==0.23.2
+numpy==1.25.2
+scikit-learn==1.3.0
 matplotlib==3.3.3
 palmerpenguins==0.1.4
 scipy==1.7.0
